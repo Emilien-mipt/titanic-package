@@ -19,11 +19,10 @@ features:
   - Age
   - SibSp
   - Parch
-  - Ticket
   - Fare
   - Cabin
   - Embarked
-  # - Title Will be created
+  - Title
 
 variables_to_drop:
   - PassengerId
@@ -35,7 +34,6 @@ categorical_vars:
   - Cabin
   - Embarked
   - Title
-  # - Title Will be created
 
 numerical_vars:
   - Pclass
