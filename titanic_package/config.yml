@@ -1,0 +1,63 @@
+# Package Overview
+package_name: titanic_model
+
+pipeline_name: titanic_model
+pipeline_save_file: titanic_model_output_v
+
+# Data Files
+training_data_file: train.csv
+test_data_file: test.csv
+
+
+# Variables
+# The variable we are attempting to predict
+target: Survived
+
+variables_to_drop:
+  - PassengerId
+  - Name
+  - Ticket
+
+features:
+  - Pclass
+  - Sex
+  - Age
+  - SibSp
+  - Parch
+  - Ticket
+  - Fare
+  - Cabin
+  - Embarked
+  # - Title Will be created
+
+categorical_vars:
+  - Sex
+  - Cabin
+  - Embarked
+  - Title
+  # - Title Will be created
+
+numerical_vars:
+  - Pclass
+  - Age
+  - Sibsp
+  - Parch
+  - Fare
+
+# categorical variables with NA in train set
+categorical_vars_with_na:
+  - Cabin
+  - Embarked
+
+numerical_vars_with_na:
+  - Age
+  - Fare
+
+# set train/test split
+test_size: 0.2
+
+# to set the random seed
+random_state: 0
+
+# Regularization parameter
+alpha: 0.0005
