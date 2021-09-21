@@ -44,4 +44,4 @@ repos:
   rev: 9feadeb
   hooks:
   - id: mypy
-    args: [--ignore-missing-imports, --warn-no-return, --warn-redundant-casts, --disallow-incomplete-defs]
+    args: [--ignore-missing-imports, --warn-no-return, --warn-redundant-casts]
