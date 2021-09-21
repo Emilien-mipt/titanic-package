@@ -13,11 +13,6 @@ test_data_file: test.csv
 # The variable we are attempting to predict
 target: Survived
 
-variables_to_drop:
-  - PassengerId
-  - Name
-  - Ticket
-
 features:
   - Pclass
   - Sex
@@ -29,6 +24,11 @@ features:
   - Cabin
   - Embarked
   # - Title Will be created
+
+variables_to_drop:
+  - PassengerId
+  - Name
+  - Ticket
 
 categorical_vars:
   - Sex
