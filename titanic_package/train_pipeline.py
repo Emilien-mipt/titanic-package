@@ -1,33 +1,9 @@
-import re
-
-import numpy as np
 from config.core import config
 from pipeline import titanic_pipe
 from processing.data_manager import load_dataset, save_pipeline
+from processing.validation import get_first_cabin, get_title
+from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
-
-
-# retain only the first cabin if more than
-# 1 are available per passenger
-def get_first_cabin(row):
-    try:
-        return row.split()[0]
-    except TypeError:
-        return np.nan
-
-
-def get_title(passenger):
-    line = passenger
-    if re.search("Mrs", line):
-        return "Mrs"
-    elif re.search("Mr", line):
-        return "Mr"
-    elif re.search("Miss", line):
-        return "Miss"
-    elif re.search("Master", line):
-        return "Master"
-    else:
-        return "Other"
 
 
 def run_training() -> None:
@@ -57,6 +33,24 @@ def run_training() -> None:
 
     # fit model
     titanic_pipe.fit(X_train, y_train)
+
+    # make predictions for train set
+    class_ = titanic_pipe.predict(X_train)
+    pred = titanic_pipe.predict_proba(X_train)[:, 1]
+
+    # determine mse and rmse
+    print("train roc-auc: {}".format(roc_auc_score(y_train, pred)))
+    print("train accuracy: {}".format(accuracy_score(y_train, class_)))
+    print()
+
+    # make predictions for test set
+    class_ = titanic_pipe.predict(X_test)
+    pred = titanic_pipe.predict_proba(X_test)[:, 1]
+
+    # determine mse and rmse
+    print("test roc-auc: {}".format(roc_auc_score(y_test, pred)))
+    print("test accuracy: {}".format(accuracy_score(y_test, class_)))
+    print()
 
     # persist trained model
     save_pipeline(pipeline_to_persist=titanic_pipe)
