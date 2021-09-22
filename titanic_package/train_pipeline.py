@@ -1,3 +1,5 @@
+import logging
+
 from config.core import config
 from pipeline import titanic_pipe
 from processing.data_manager import load_dataset, save_pipeline
@@ -5,9 +7,12 @@ from processing.validation import get_first_cabin, get_title
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
+from titanic_package import __version__ as _version
+
 
 def run_training() -> None:
     """Train the model."""
+    logging.basicConfig(filename=f"./titanic_package/logs/log_{_version}.log", level=logging.DEBUG)
 
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
@@ -38,19 +43,31 @@ def run_training() -> None:
     class_ = titanic_pipe.predict(X_train)
     pred = titanic_pipe.predict_proba(X_train)[:, 1]
 
-    # determine mse and rmse
-    print("train roc-auc: {}".format(roc_auc_score(y_train, pred)))
-    print("train accuracy: {}".format(accuracy_score(y_train, class_)))
+    # determine train accuracy and roc-auc
+    train_accuracy = accuracy_score(y_train, class_)
+    train_roc_auc = roc_auc_score(y_train, pred)
+
+    print(f"train accuracy: {train_accuracy}")
+    print(f"train roc-auc: {train_roc_auc}")
     print()
+
+    logging.info(f"train accuracy: {train_accuracy}")
+    logging.info(f"train roc-auc: {train_roc_auc}")
 
     # make predictions for test set
     class_ = titanic_pipe.predict(X_test)
     pred = titanic_pipe.predict_proba(X_test)[:, 1]
 
-    # determine mse and rmse
-    print("test roc-auc: {}".format(roc_auc_score(y_test, pred)))
-    print("test accuracy: {}".format(accuracy_score(y_test, class_)))
+    # determine test accuracy and roc-auc
+    test_accuracy = accuracy_score(y_test, class_)
+    test_roc_auc = roc_auc_score(y_test, pred)
+
+    print(f"test accuracy: {test_accuracy}")
+    print(f"test roc-auc: {test_roc_auc}")
     print()
+
+    logging.info(f"test accuracy: {test_accuracy}")
+    logging.info(f"test roc-auc: {test_roc_auc}")
 
     # persist trained model
     save_pipeline(pipeline_to_persist=titanic_pipe)
