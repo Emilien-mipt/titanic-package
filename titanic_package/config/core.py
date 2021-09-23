@@ -12,6 +12,7 @@ ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
 TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
+LOG_DIR = PACKAGE_ROOT / "logs"
 
 
 class AppConfig(BaseModel):
