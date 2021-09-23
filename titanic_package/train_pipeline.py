@@ -1,6 +1,7 @@
 import logging
+from pathlib import Path
 
-from config.core import config
+from config.core import LOG_DIR, config
 from pipeline import titanic_pipe
 from processing.data_manager import load_dataset, save_pipeline
 from processing.validation import get_first_cabin, get_title
@@ -12,7 +13,7 @@ from titanic_package import __version__ as _version
 
 def run_training() -> None:
     """Train the model."""
-    logging.basicConfig(filename=f"./titanic_package/logs/log_{_version}.log", level=logging.DEBUG)
+    logging.basicConfig(filename=Path(f"{LOG_DIR}/log_{_version}.log"), level=logging.DEBUG)
 
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
