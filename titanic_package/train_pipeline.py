@@ -13,7 +13,11 @@ from titanic_package import __version__ as _version
 
 def run_training() -> None:
     """Train the model."""
-    logging.basicConfig(filename=Path(f"{LOG_DIR}/log_{_version}.log"), level=logging.DEBUG)
+    # Update logs
+    log_path = Path(f"{LOG_DIR}/log_{_version}.log")
+    if Path.exists(log_path):
+        log_path.unlink()
+    logging.basicConfig(filename=log_path, level=logging.DEBUG)
 
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
