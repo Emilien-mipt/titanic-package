@@ -43,6 +43,6 @@ titanic_pipe = Pipeline(
         ("categorical_encoder", OneHotEncoder(drop_last=True, variables=config.model_config.categorical_vars)),
         # scale
         ("scaler", StandardScaler()),
-        ("Logit", LogisticRegression(C=0.0005, random_state=0)),
+        ("Logit", LogisticRegression(C=0.0005, random_state=config.model_config.random_state)),
     ]
 )
