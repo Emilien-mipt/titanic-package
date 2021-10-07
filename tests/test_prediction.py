@@ -1,5 +1,3 @@
-import math
-
 import numpy as np
 
 from titanic_package.predict import make_prediction

@@ -1,5 +1,5 @@
 import re
-from typing import List, Optional, Tuple, Union
+from typing import List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -13,7 +13,7 @@ from titanic_package.config.core import config
 def get_first_cabin(row):
     try:
         return row.split()[0]
-    except Exception:
+    except:
         return np.nan
 
 
