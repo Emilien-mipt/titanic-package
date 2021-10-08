@@ -7,7 +7,7 @@ from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = "titanic-model"
-DESCRIPTION = "Example of titanic model package."
+DESCRIPTION = "Titanic model package."
 URL = "https://github.com/Emilien-mipt/titanic-package"
 EMAIL = "emin.tagiev@phystech.edu"
 AUTHOR = "Emin Tagiev"

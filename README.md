@@ -21,5 +21,10 @@ course at Udemy
 ["Deployment of Machine Learning Models"](https://www.udemy.com/course/deployment-of-machine-learning-models/).
 
 ## Code structure
+### Configs
+### Data processing
+### Setting the pipeline and training
+### Making predictions
+### Tests
 ## How to run the code
 ## How to install the package
