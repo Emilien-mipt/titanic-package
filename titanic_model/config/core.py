@@ -1,13 +1,13 @@
 from pathlib import Path
-from typing import Dict, List, Sequence
+from typing import List, Sequence
 
 from pydantic import BaseModel
 from strictyaml import YAML, load
 
-import titanic_package
+import titanic_model
 
 # Project Directories
-PACKAGE_ROOT = Path(titanic_package.__file__).resolve().parent
+PACKAGE_ROOT = Path(titanic_model.__file__).resolve().parent
 ROOT = PACKAGE_ROOT.parent
 CONFIG_FILE_PATH = PACKAGE_ROOT / "config.yml"
 DATASET_DIR = PACKAGE_ROOT / "datasets"

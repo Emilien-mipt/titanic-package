@@ -1,6 +1,6 @@
 import logging
 
-from titanic_package.config.core import PACKAGE_ROOT, config
+from titanic_model.config.core import PACKAGE_ROOT, config
 
 # It is strongly advised that you do not add any handlers other than
 # NullHandler to your library’s loggers. This is because the configuration

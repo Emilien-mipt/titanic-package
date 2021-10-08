@@ -5,8 +5,8 @@ import joblib
 import pandas as pd
 from sklearn.pipeline import Pipeline
 
-from titanic_package import __version__ as _version
-from titanic_package.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
+from titanic_model import __version__ as _version
+from titanic_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
 
 
 def load_dataset(*, file_name: str) -> pd.DataFrame:

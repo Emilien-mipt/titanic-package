@@ -8,7 +8,7 @@ from processing.validation import get_first_cabin, get_title
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
-from titanic_package import __version__ as _version
+from titanic_model import __version__ as _version
 
 
 def run_training() -> None:

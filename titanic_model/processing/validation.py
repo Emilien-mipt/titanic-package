@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from pydantic import BaseModel, ValidationError
 
-from titanic_package.config.core import config
+from titanic_model.config.core import config
 
 
 # retain only the first cabin if more than

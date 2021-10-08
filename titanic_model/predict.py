@@ -2,10 +2,10 @@ import typing as t
 
 import pandas as pd
 
-from titanic_package import __version__ as _version
-from titanic_package.config.core import config
-from titanic_package.processing.data_manager import load_pipeline
-from titanic_package.processing.validation import validate_inputs
+from titanic_model import __version__ as _version
+from titanic_model.config.core import config
+from titanic_model.processing.data_manager import load_pipeline
+from titanic_model.processing.validation import validate_inputs
 
 pipeline_file_name = f"{config.app_config.pipeline_save_file}{_version}.pkl"
 _price_pipe = load_pipeline(file_name=pipeline_file_name)

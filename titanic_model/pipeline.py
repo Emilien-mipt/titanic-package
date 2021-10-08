@@ -11,8 +11,8 @@ from sklearn.pipeline import Pipeline
 # feature scaling
 from sklearn.preprocessing import StandardScaler
 
-from titanic_package.config.core import config
-from titanic_package.processing.features import ExtractLetterTransformer
+from titanic_model.config.core import config
+from titanic_model.processing.features import ExtractLetterTransformer
 
 # set up the pipeline
 titanic_pipe = Pipeline(
