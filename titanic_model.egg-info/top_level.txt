@@ -1,1 +1,1 @@
-titanic_package
+titanic_model
