@@ -1,5 +1,5 @@
-from titanic_package.config.core import config
-from titanic_package.processing.features import ExtractLetterTransformer
+from titanic_model.config.core import config
+from titanic_model.processing.features import ExtractLetterTransformer
 
 
 def test_temporal_variable_transformer(sample_input_data):

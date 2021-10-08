@@ -1,6 +1,6 @@
 import numpy as np
 
-from titanic_package.predict import make_prediction
+from titanic_model.predict import make_prediction
 
 
 def test_make_prediction(sample_input_data):

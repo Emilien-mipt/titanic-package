@@ -1,7 +1,7 @@
 import pytest
 
-from titanic_package.config.core import config
-from titanic_package.processing.data_manager import load_dataset
+from titanic_model.config.core import config
+from titanic_model.processing.data_manager import load_dataset
 
 
 @pytest.fixture()
