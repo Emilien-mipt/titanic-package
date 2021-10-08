@@ -22,9 +22,37 @@ course at Udemy
 
 ## Code structure
 ### Configs
-### Data processing
+The model parameters are set via configs. The configs are represented by yaml files. The values
+for parameters can be set in `titanic_model/config.yml` file. The cofigs are parsed and validated
+in `titanic_model/config/core.py` module using [StrictYaml](https://github.com/crdoconnor/strictyaml) lib for parsing
+and [Pydantic](https://pydantic-docs.helpmanual.io/) lib for type checking the values.
+
 ### Setting the pipeline and training
+The pipeline is set in `titanic_model/pipeline.py` file. Training is set in
+`titanic_model/train_pipeline.py` file. All the data processing steps are made in the same
+[SciKit-learn](https://scikit-learn.org/stable/) style including custom transformations, stored in
+`titanic_model/processing/features.py` file.
+
 ### Making predictions
-### Tests
+The code for prediction is set in `titanic_model/preict.py` file. Before every prediction
+the validation of input data is made. The code for validation can be found in
+`titanic_model/processing/validation.py` file.
+
 ## How to run the code
+The code can be run via the [Tox](https://pypi.org/project/tox/) tool. Tox is a
+convenient way to set up the environment and python paths automatically and run the
+required commands from the command line. The file with description for tox can be found
+in `tox.ini` file. The following commands can be run from the command line
+using tox:
+
+* Run training: `tox -e train`
+* Run testing (via [pytest](https://docs.pytest.org/en/6.2.x/)): `tox -e test_package`
+* Run typechecking (via [mypy](https://mypy.readthedocs.io/en/stable/)): `tox -e typechecks`
+* Run style checks
+(via [black](https://github.com/psf/black), [isort](https://github.com/PyCQA/isort),
+[mypy](https://mypy.readthedocs.io/en/stable/)
+and [flake8](https://pypi.org/project/flake8/)): `tox -e stylechecks`
+
+
+
 ## How to install the package
