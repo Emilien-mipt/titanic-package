@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: titanic-model
 Version: 0.0.1
-Summary: Example of titanic model package.
+Summary: Titanic model package.
 Home-page: https://github.com/Emilien-mipt/titanic-package
 Author: Emin Tagiev
 Author-email: emin.tagiev@phystech.edu
@@ -19,4 +19,4 @@ Classifier: Programming Language :: Python :: Implementation :: PyPy
 Requires-Python: >=3.6.0
 Description-Content-Type: text/markdown
 
-Example of titanic model package.
+Titanic model package.
