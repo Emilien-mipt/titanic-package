@@ -30,11 +30,11 @@ and [Pydantic](https://pydantic-docs.helpmanual.io/) lib for type checking the v
 ### Setting the pipeline and training
 The pipeline is set in `titanic_model/pipeline.py` file. Training is set in
 `titanic_model/train_pipeline.py` file. All the data processing steps are made in the same
-[SciKit-learn](https://scikit-learn.org/stable/) style including custom transformations, stored in
+[Scikit-learn](https://scikit-learn.org/stable/) style including custom transformations, stored in
 `titanic_model/processing/features.py` file.
 
 ### Making predictions
-The code for prediction is set in `titanic_model/preict.py` file. Before every prediction
+The code for prediction is set in `titanic_model/predict.py` file. Before every prediction
 the validation of input data is made. The code for validation can be found in
 `titanic_model/processing/validation.py` file.
 
@@ -45,7 +45,7 @@ required commands from the command line. The file with description for tox can b
 in `tox.ini` file. The following commands can be run from the command line
 using tox:
 
-* Run training: `tox -e train`
+* Run training: first create a directory for saving models if there is no any `mkdir ./titanic_model/trained_models` and then run `tox -e train`
 * Run testing (via [pytest](https://docs.pytest.org/en/6.2.x/)): `tox -e test_package`
 * Run typechecking (via [mypy](https://mypy.readthedocs.io/en/stable/)): `tox -e typechecks`
 * Run style checks
@@ -53,6 +53,23 @@ using tox:
 [mypy](https://mypy.readthedocs.io/en/stable/)
 and [flake8](https://pypi.org/project/flake8/)): `tox -e stylechecks`
 
-
-
 ## How to install the package
+In order to install the package run 
+
+```
+pip install titanic-model
+```
+
+After that you can make predictions, using the package:
+```
+from titanic_model.predict import make_prediction
+
+# Example input
+input_dict = {'PassengerId': [0], 'Pclass': [1], 'Name': ['Snyder, Mrs. John Pillsbury (Nelle Stevenson)'], 
+              'Sex': ['female'], 'Age': [23], 'SibSp': [1], 'Parch': [0], 'Ticket': [21228], 'Fare': [82.2667], 
+              'Cabin': ['B45'], 'Embarked': ['S']}
+
+result = make_prediction(input_data=input_dict)
+
+print(result)
+```
