@@ -73,3 +73,7 @@ result = make_prediction(input_data=input_dict)
 
 print(result)
 ```
+
+## Web application
+Link to the app: https://github.com/Emilien-mipt/titanic-webapp
+Link to the corresponding Heroku link: https://titanicwebapp.herokuapp.com/
