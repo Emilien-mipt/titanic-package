@@ -23,4 +23,4 @@ titanic_model/processing/__init__.py
 titanic_model/processing/data_manager.py
 titanic_model/processing/features.py
 titanic_model/processing/validation.py
-titanic_model/trained_models/titanic_model_output_v0.0.1.pkl
+titanic_model/trained_models/titanic_model_output_v0.0.2.pkl
