@@ -61,4 +61,4 @@ test_size: 0.2
 random_state: 0
 
 # Regularization parameter
-alpha: 0.0005
+alpha: 0.001
