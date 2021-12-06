@@ -27,6 +27,11 @@ jobs:
           python -m site
           python -m pip install --upgrade pip setuptools wheel
           python -m pip install --upgrade coverage[toml] virtualenv tox tox-gh-actions
-
-      - name: "Run tox targets for ${{ matrix.python-version }}"
-        run: "tox -e lint"
+      - name: "Download Titanic data from Kaggle"
+        run: |
+          chmod +x ./fetch_kaggle_dataset.sh
+          ./fetch_kaggle_dataset.sh
+      - name: "Run tests for ${{ matrix.python-version }}"
+        run: tox -e test_package
+      - name: "Run linters (isort, black, mypy, flake8) for ${{ matrix.python-version }}"
+        run: tox -e test_package
