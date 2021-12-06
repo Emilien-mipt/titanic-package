@@ -11,7 +11,7 @@ DESCRIPTION = "Titanic model package."
 URL = "https://github.com/Emilien-mipt/titanic-package"
 EMAIL = "emin.tagiev@phystech.edu"
 AUTHOR = "Emin Tagiev"
-REQUIRES_PYTHON = ">=3.6.0"
+REQUIRES_PYTHON = ">=3.7.0"
 
 
 # The rest you shouldn't have to touch too much :)
@@ -60,7 +60,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
