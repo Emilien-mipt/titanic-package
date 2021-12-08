@@ -9,7 +9,7 @@ on:
 
 jobs:
   tests:
-    name: "Python ${{ matrix.python-version }}"
+    name: "Test and lint for Python ${{ matrix.python-version }}"
     runs-on: "ubuntu-latest"
 
     strategy:
