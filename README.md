@@ -76,4 +76,8 @@ print(result)
 
 ## Web application
 Link to the app: https://github.com/Emilien-mipt/titanic-webapp
+
 Link to the corresponding Heroku link: https://titanicwebapp.herokuapp.com/
+
+## CI (Continuous Integration)
+CI has been added to the project using Github Actions in order to automate package testing step and upload to PyPI step. The files that stand for CI are located in `./github/workflows/` directory. `CI.yml` file stands for automatic testing of the package every pull-request and push to the main branch, while `PyPI.yml` file is responsible for the automatic upload of the package to the PyPI every time the release is made for the corresponding version of the package. 
