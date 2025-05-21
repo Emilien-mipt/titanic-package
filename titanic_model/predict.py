@@ -22,8 +22,8 @@ def make_prediction(
 
     results: t.Dict[str, t.Any] = {"preds": None, "probs": None, "version": _version, "errors": errors}
 
-    preds = _price_pipe.predict(X=validated_data[config.model_config.features])
-    probs = _price_pipe.predict_proba(X=validated_data[config.model_config.features])[:, 1]
+    preds = _price_pipe.predict(X=validated_data[config.model_config_params.features])
+    probs = _price_pipe.predict_proba(X=validated_data[config.model_config_params.features])[:, 1]
 
     # Fill the results dict
     results["preds"] = [pred for pred in preds]

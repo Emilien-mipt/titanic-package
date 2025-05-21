@@ -36,8 +36,8 @@ def drop_na_inputs(*, input_data: pd.DataFrame) -> pd.DataFrame:
     validated_data = input_data.copy()
     new_vars_with_na = [
         var
-        for var in config.model_config.features
-        if var not in config.model_config.categorical_vars_with_na + config.model_config.numerical_vars_with_na
+        for var in config.model_config_params.features
+        if var not in config.model_config_params.categorical_vars_with_na + config.model_config_params.numerical_vars_with_na
         and validated_data[var].isnull().sum() > 0
     ]
     validated_data.dropna(subset=new_vars_with_na, inplace=True)
@@ -53,12 +53,12 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
     input_data["Fare"] = input_data["Fare"].astype("float")
     input_data["Age"] = input_data["Age"].astype("float")
 
-    input_data.drop(labels=config.model_config.variables_to_drop, axis=1, inplace=True)
+    input_data.drop(labels=config.model_config_params.variables_to_drop, axis=1, inplace=True)
 
-    # Columns should coinside with config.model_config.feature
-    assert input_data.columns.tolist() == config.model_config.features
+    # Columns should coinside with config.model_config_params.feature
+    assert input_data.columns.tolist() == config.model_config_params.features
 
-    relevant_data = input_data[config.model_config.features].copy()
+    relevant_data = input_data[config.model_config_params.features].copy()
     validated_data = drop_na_inputs(input_data=relevant_data)
 
     errors = None
@@ -73,14 +73,14 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
 
 
 class TitanicInputSchema(BaseModel):
-    PassengerId: Optional[int]
+    PassengerId: Optional[int] = None
     Pclass: Optional[int]
-    Name: Optional[str]
+    Name: Optional[str] = None
     Sex: Optional[str]
     Age: Optional[float]
     SibSp: Optional[int]
     Parch: Optional[int]
-    Ticket: Optional[str]
+    Ticket: Optional[str] = None
     Fare: Optional[float]
     Cabin: Optional[str]
     Embarked: Optional[str]
