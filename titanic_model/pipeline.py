@@ -3,8 +3,8 @@ from feature_engine.encoding import OneHotEncoder, RareLabelEncoder
 
 # for imputation
 from feature_engine.imputation import AddMissingIndicator, CategoricalImputer, MeanMedianImputer
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 # pipeline
 from sklearn.pipeline import Pipeline
@@ -22,7 +22,9 @@ titanic_pipe = Pipeline(
         # impute categorical variables with string missing
         (
             "categorical_imputation",
-            CategoricalImputer(imputation_method="missing", variables=config.model_config_params.categorical_vars_with_na),
+            CategoricalImputer(
+                imputation_method="missing", variables=config.model_config_params.categorical_vars_with_na
+            ),
         ),
         # add missing indicator to numerical variables
         ("missing_indicator", AddMissingIndicator(variables=config.model_config_params.numerical_vars_with_na)),
