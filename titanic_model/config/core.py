@@ -42,7 +42,6 @@ class ModelConfig(BaseModel):
     var_for_letter_extraction: List[str]
     test_size: float
     random_state: int
-    alpha: float
 
 
 class Config(BaseModel):
