@@ -1,8 +1,7 @@
 import numpy as np
+import pandas as pd
 
 from titanic_model.predict import make_prediction
-
-import pandas as pd
 
 
 def test_make_prediction(sample_input_data):
@@ -24,20 +23,17 @@ def test_make_prediction(sample_input_data):
 
     # Given custom input
     custom_input = {
-        'PassengerId': [0, 1],  # Теперь по 3 значения в каждом списке
-        'Pclass': [1, 2],
-        'Name': [
-            'Mr. Emin Tagiev',
-            'Miss Sofiya Tagieva'
-        ],
-        'Sex': ['male', 'female'],
-        'Age': [32, 5],
-        'SibSp': [1, np.nan],
-        'Parch': [0, 0],
-        'Ticket': [21228, 34567],
-        'Fare': [82.2667, 26.0],
-        'Cabin': ['B45', 'C22'],
-        'Embarked': ['S', 'C']
+        "PassengerId": [0, 1],  # Теперь по 3 значения в каждом списке
+        "Pclass": [1, 2],
+        "Name": ["Mr. Emin Tagiev", "Miss Sofiya Tagieva"],
+        "Sex": ["male", "female"],
+        "Age": [32, 5],
+        "SibSp": [1, np.nan],
+        "Parch": [0, 0],
+        "Ticket": [21228, 34567],
+        "Fare": [82.2667, 26.0],
+        "Cabin": ["B45", "C22"],
+        "Embarked": ["S", "C"],
     }
 
     custom_data = pd.DataFrame(custom_input)
