@@ -12,7 +12,7 @@ from titanic_model.config.core import config
 # 1 are available per passenger
 def get_first_cabin(row):
     try:
-        return row.split()[0]
+        return row[0]
     except:
         return np.nan
 
