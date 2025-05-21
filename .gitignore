@@ -8,3 +8,7 @@ __pycache__/
 
 # tox
 .tox/
+
+# Package files
+dist/
+titanic_model.egg-info
