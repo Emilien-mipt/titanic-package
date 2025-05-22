@@ -10,7 +10,7 @@ authors = [
     {name = "Emin Tagiev", email = "emin.tagiev@phystech.edu"},
 ]
 readme = "README.md"
-requires-python = ">3.9.0"
+requires-python = ">=3.10.0"
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 classifiers = [
