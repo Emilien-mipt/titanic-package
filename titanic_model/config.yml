@@ -59,6 +59,3 @@ test_size: 0.2
 
 # to set the random seed
 random_state: 0
-
-# Regularization parameter
-alpha: 0.001

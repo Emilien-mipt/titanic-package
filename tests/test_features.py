@@ -4,7 +4,7 @@ from titanic_model.processing.features import ExtractLetterTransformer
 
 def test_temporal_variable_transformer(sample_input_data):
     # Given
-    transformer = ExtractLetterTransformer(variables=config.model_config.var_for_letter_extraction)
+    transformer = ExtractLetterTransformer(variables=config.model_config_params.var_for_letter_extraction)
 
     assert sample_input_data["Cabin"].iat[12] == "B45"
     assert sample_input_data["Cabin"].iat[14] == "E31"

@@ -29,28 +29,28 @@ def run_training() -> None:
     data["Fare"] = data["Fare"].astype("float")
     data["Age"] = data["Age"].astype("float")
 
-    data.drop(labels=config.model_config.variables_to_drop, axis=1, inplace=True)
+    data.drop(labels=config.model_config_params.variables_to_drop, axis=1, inplace=True)
 
     # divide train and test
     X_train, X_test, y_train, y_test = train_test_split(
-        data[config.model_config.features],  # predictors
-        data[config.model_config.target],
-        test_size=config.model_config.test_size,
+        data[config.model_config_params.features],  # predictors
+        data[config.model_config_params.target],
+        test_size=config.model_config_params.test_size,
         # we are setting the random seed here
         # for reproducibility
-        random_state=config.model_config.random_state,
+        random_state=config.model_config_params.random_state,
     )
 
     # fit model
     titanic_pipe.fit(X_train, y_train)
 
     # make predictions for train set
-    class_ = titanic_pipe.predict(X_train)
-    pred = titanic_pipe.predict_proba(X_train)[:, 1]
+    class_train = titanic_pipe.predict(X_train)
+    pred_train = titanic_pipe.predict_proba(X_train)[:, 1]
 
     # determine train accuracy and roc-auc
-    train_accuracy = accuracy_score(y_train, class_)
-    train_roc_auc = roc_auc_score(y_train, pred)
+    train_accuracy = accuracy_score(y_train, class_train)
+    train_roc_auc = roc_auc_score(y_train, pred_train)
 
     print(f"train accuracy: {train_accuracy}")
     print(f"train roc-auc: {train_roc_auc}")
@@ -60,12 +60,12 @@ def run_training() -> None:
     logging.info(f"train roc-auc: {train_roc_auc}")
 
     # make predictions for test set
-    class_ = titanic_pipe.predict(X_test)
-    pred = titanic_pipe.predict_proba(X_test)[:, 1]
+    class_test = titanic_pipe.predict(X_test)
+    pred_test = titanic_pipe.predict_proba(X_test)[:, 1]
 
     # determine test accuracy and roc-auc
-    test_accuracy = accuracy_score(y_test, class_)
-    test_roc_auc = roc_auc_score(y_test, pred)
+    test_accuracy = accuracy_score(y_test, class_test)
+    test_roc_auc = roc_auc_score(y_test, pred_test)
 
     print(f"test accuracy: {test_accuracy}")
     print(f"test roc-auc: {test_roc_auc}")

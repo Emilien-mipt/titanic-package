@@ -5,3 +5,13 @@
 .mypy_cache/
 
 __pycache__/
+
+# tox
+.tox/
+
+# Package files
+dist/
+titanic_model.egg-info
+
+# Mac
+.DS_Store

@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import List, Sequence
+from typing import List, Optional, Sequence
 
 from pydantic import BaseModel
 from strictyaml import YAML, load
@@ -42,14 +42,13 @@ class ModelConfig(BaseModel):
     var_for_letter_extraction: List[str]
     test_size: float
     random_state: int
-    alpha: float
 
 
 class Config(BaseModel):
     """Master config object."""
 
     app_config: AppConfig
-    model_config: ModelConfig
+    model_config_params: ModelConfig
 
 
 def find_config_file() -> Path:
@@ -59,7 +58,7 @@ def find_config_file() -> Path:
     raise Exception(f"Config not found at {CONFIG_FILE_PATH!r}")
 
 
-def fetch_config_from_yaml(cfg_path: Path = None) -> YAML:
+def fetch_config_from_yaml(cfg_path: Optional[Path] = None) -> YAML:
     """Parse YAML containing the package configuration."""
 
     if not cfg_path:
@@ -80,7 +79,7 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
     # specify the data attribute from the strictyaml YAML type.
     _config = Config(
         app_config=AppConfig(**parsed_config.data),
-        model_config=ModelConfig(**parsed_config.data),
+        model_config_params=ModelConfig(**parsed_config.data),
     )
 
     return _config
