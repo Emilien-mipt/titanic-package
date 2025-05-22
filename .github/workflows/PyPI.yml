@@ -19,24 +19,25 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # Sets up python
       - name: Set up Python
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: 3.13
 
       # Install dependencies
       - name: "Installs dependencies"
         run: |
-          python3 -m pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install setuptools wheel twine
 
       # Build and upload to PyPI
       - name: "Build and Publish to PyPI"
         run: |
-          python3 setup.py sdist bdist_wheel
+          python -m build
+          twine check dist/*
           twine upload dist/*
         env:
           TWINE_USERNAME: __token__
