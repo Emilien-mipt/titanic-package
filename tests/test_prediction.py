@@ -23,7 +23,7 @@ def test_make_prediction(sample_input_data):
 
     # Given custom input
     custom_input = {
-        "PassengerId": [0, 1],  # Теперь по 3 значения в каждом списке
+        "PassengerId": [0, 1],
         "Pclass": [1, 2],
         "Name": ["Mr. Emin Tagiev", "Miss Sofiya Tagieva"],
         "Sex": ["male", "female"],

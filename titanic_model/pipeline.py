@@ -2,9 +2,12 @@
 from feature_engine.encoding import OneHotEncoder, RareLabelEncoder
 
 # for imputation
-from feature_engine.imputation import AddMissingIndicator, CategoricalImputer, MeanMedianImputer
+from feature_engine.imputation import (
+    AddMissingIndicator,
+    CategoricalImputer,
+    MeanMedianImputer,
+)
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
 
 # pipeline
 from sklearn.pipeline import Pipeline
