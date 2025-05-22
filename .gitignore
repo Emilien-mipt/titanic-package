@@ -12,3 +12,6 @@ __pycache__/
 # Package files
 dist/
 titanic_model.egg-info
+
+# Mac
+.DS_Store
