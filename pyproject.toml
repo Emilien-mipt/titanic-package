@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "titanic-model"
 description = "Titanic model package."
-version = "1.0.0"
+version = "1.0.1"
 authors = [
     {name = "Emin Tagiev", email = "emin.tagiev@phystech.edu"},
 ]
