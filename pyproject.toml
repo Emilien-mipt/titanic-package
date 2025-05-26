@@ -25,7 +25,14 @@ classifiers = [
 Homepage = "https://github.com/Emilien-mipt/titanic-package"
 
 [tool.setuptools]
-packages = ["titanic_model"]
+# Аналог find_packages(exclude=("tests",))
+packages = {find = {exclude = ["tests"]}}
+
+# Аналог package_data
+package-data = {"titanic_model" = ["VERSION"]}
+
+# Аналог include_package_data
+include-package-data = true
 
 [tool.setuptools.dynamic]
 # Динамическое чтение версии из файла
