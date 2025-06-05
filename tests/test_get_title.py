@@ -1,5 +1,3 @@
-import pandas as pd
-
 from titanic_model.processing.validation import get_title
 
 
