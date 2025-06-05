@@ -22,7 +22,6 @@ def run_training() -> None:
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
 
-    data["Cabin"] = data["Cabin"].apply(get_first_cabin)
     data["Title"] = data["Name"].apply(get_title)
 
     # cast numerical variables as floats

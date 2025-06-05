@@ -8,15 +8,6 @@ from pydantic import BaseModel, ValidationError
 from titanic_model.config.core import config
 
 
-# retain only the first cabin if more than
-# 1 are available per passenger
-def get_first_cabin(row):
-    try:
-        return row[0]
-    except:
-        return np.nan
-
-
 def get_title(passenger):
     line = passenger
     if re.search("Mrs", line):
@@ -48,7 +39,6 @@ def drop_na_inputs(*, input_data: pd.DataFrame) -> pd.DataFrame:
 
 def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[dict]]:
     """Check model inputs for unprocessable values."""
-    input_data["Cabin"] = input_data["Cabin"].apply(get_first_cabin)
     input_data["Title"] = input_data["Name"].apply(get_title)
     # cast numerical variables as floats
     input_data["Fare"] = input_data["Fare"].astype("float")
