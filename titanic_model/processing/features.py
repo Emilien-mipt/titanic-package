@@ -24,6 +24,6 @@ class ExtractLetterTransformer(BaseEstimator, TransformerMixin):
         X = X.copy()
 
         for feature in self.variables:
-            X[feature] = X[feature].str[0]
+            X[feature] = X[feature].apply(lambda x: x if (pd.isnull(x) or str(x) == "Missing") else x[0])
 
         return X

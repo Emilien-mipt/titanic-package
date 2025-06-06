@@ -4,7 +4,7 @@ from pathlib import Path
 from config.core import LOG_DIR, config
 from pipeline import titanic_pipe
 from processing.data_manager import load_dataset, save_pipeline
-from processing.validation import get_first_cabin, get_title
+from processing.validation import get_title
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
@@ -22,7 +22,6 @@ def run_training() -> None:
     # read training data
     data = load_dataset(file_name=config.app_config.training_data_file)
 
-    data["Cabin"] = data["Cabin"].apply(get_first_cabin)
     data["Title"] = data["Name"].apply(get_title)
 
     # cast numerical variables as floats
