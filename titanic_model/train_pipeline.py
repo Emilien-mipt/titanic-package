@@ -52,12 +52,12 @@ def run_training() -> None:
     train_f1 = f1_score(y_train, class_train)
     train_roc_auc = roc_auc_score(y_train, pred_train)
 
-    print(f"train f1-score: {train_f1}")
-    print(f"train roc-auc: {train_roc_auc}")
+    print(f"train f1-score: {train_f1:.4f}")
+    print(f"train roc-auc: {train_roc_auc:.4f}")
     print()
 
-    logging.info(f"train f1-score: {train_f1}")
-    logging.info(f"train roc-auc: {train_roc_auc}")
+    logging.info(f"train f1-score: {train_f1:.4f}")
+    logging.info(f"train roc-auc: {train_roc_auc:.4f}")
 
     # make predictions for test set
     class_test = titanic_pipe.predict(X_test)
@@ -67,12 +67,12 @@ def run_training() -> None:
     test_f1 = f1_score(y_test, class_test)
     test_roc_auc = roc_auc_score(y_test, pred_test)
 
-    print(f"test f1-score: {test_f1}")
-    print(f"test roc-auc: {test_roc_auc}")
+    print(f"test f1-score: {test_f1:.4f}")
+    print(f"test roc-auc: {test_roc_auc:.4f}")
     print()
 
-    logging.info(f"test f1-score: {test_f1}")
-    logging.info(f"test roc-auc: {test_roc_auc}")
+    logging.info(f"test f1-score: {test_f1:.4f}")
+    logging.info(f"test roc-auc: {test_roc_auc:.4f}")
 
     # persist trained model
     save_pipeline(pipeline_to_persist=titanic_pipe)
