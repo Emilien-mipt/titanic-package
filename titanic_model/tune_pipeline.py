@@ -1,8 +1,12 @@
+import logging
+from pathlib import Path
+
 from processing.data_manager import load_dataset
 from processing.validation import get_title
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_validate
 
-from titanic_model.config.core import config
+from titanic_model import __version__ as _version
+from titanic_model.config.core import LOG_DIR, config
 from titanic_model.pipeline import titanic_pipe
 from titanic_model.processing.data_manager import save_pipeline
 
@@ -31,6 +35,12 @@ def run_random_search(X, y, pipeline, grid, n_iter=20):
 
 
 if __name__ == "__main__":
+    # Update logs
+    log_path = Path(f"{LOG_DIR}/log_{_version}.log")
+    if Path.exists(log_path):
+        log_path.unlink()
+    logging.basicConfig(filename=log_path, level=logging.DEBUG)
+
     # Загрузка данных
     data = load_dataset(file_name=config.app_config.training_data_file)
 
@@ -62,8 +72,12 @@ if __name__ == "__main__":
     print(f"Best params: {search.best_params_}")
     print(f"Best f1 score: {search.best_score_:.4f}")
 
+    logging.info(f"Best params: {search.best_params_}")
+    logging.info(f"Best f1 score: {search.best_score_:.4f}")
+
     # Сохранение лучшей модели
     best_model = search.best_estimator_
 
     # persist trained model
+    print(f"Saved best model!")
     save_pipeline(pipeline_to_persist=best_model)

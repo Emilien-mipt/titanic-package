@@ -1,0 +1,2 @@
+INFO:root:Best params: {'RandomForestClassifier__bootstrap': True, 'RandomForestClassifier__max_depth': None, 'RandomForestClassifier__max_features': None, 'RandomForestClassifier__min_samples_leaf': 4, 'RandomForestClassifier__min_samples_split': 2, 'RandomForestClassifier__n_estimators': 100, 'RandomForestClassifier__random_state': 0}
+INFO:root:Best f1 score: 0.7734
