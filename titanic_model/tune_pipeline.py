@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 
+import pandas as pd
 from processing.data_manager import load_dataset
 from processing.validation import get_title
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_validate
@@ -68,12 +69,47 @@ if __name__ == "__main__":
     else:
         raise ValueError(f"Unknown strategy {config.tune_config.strategy}")
 
-    # Вывод результатов
+    # 1. Вывод результатов
     print(f"Best params: {search.best_params_}")
     print(f"Best f1 score: {search.best_score_:.4f}")
 
+    # 2. Результаты всех фолдов для лучшей комбинации
+    best_idx = search.best_index_
+    cv_results = pd.DataFrame(search.cv_results_)
+
+    print("\nДетальные результаты для лучшей комбинации:")
+    print(
+        cv_results.loc[
+            best_idx,
+            [
+                "mean_test_score",
+                "std_test_score",
+                "split0_test_score",
+                "split1_test_score",
+                "split2_test_score",
+                "split3_test_score",
+                "split4_test_score",
+            ],
+        ]
+    )
+
     logging.info(f"Best params: {search.best_params_}")
     logging.info(f"Best f1 score: {search.best_score_:.4f}")
+    logging.info("\nДетальные результаты для лучшей комбинации:")
+    logging.info(
+        cv_results.loc[
+            best_idx,
+            [
+                "mean_test_score",
+                "std_test_score",
+                "split0_test_score",
+                "split1_test_score",
+                "split2_test_score",
+                "split3_test_score",
+                "split4_test_score",
+            ],
+        ]
+    )
 
     # Сохранение лучшей модели
     best_model = search.best_estimator_
