@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "titanic-model"
 description = "Titanic model package."
-version = "1.0.2"
+version = "1.1.0"
 authors = [
     {name = "Emin Tagiev", email = "emin.tagiev@phystech.edu"},
 ]
@@ -18,7 +18,8 @@ dependencies = [
     "pandas==2.2.3",
     "pydantic==2.11.4",
     "scikit-learn==1.6.1",
-    "strictyaml==1.7.3"
+    "PyYAML==6.0.2",
+    "types-PyYAML==6.0.12.20250516"
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]

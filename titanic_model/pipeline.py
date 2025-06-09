@@ -51,7 +51,7 @@ titanic_pipe = Pipeline(
         ("scaler", StandardScaler()),
         (
             "RandomForestClassifier",
-            RandomForestClassifier(random_state=config.model_config_params.random_state),
+            RandomForestClassifier(),
         ),
     ]
 )

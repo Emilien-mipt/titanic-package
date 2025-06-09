@@ -5,7 +5,7 @@ from config.core import LOG_DIR, config
 from pipeline import titanic_pipe
 from processing.data_manager import load_dataset, save_pipeline
 from processing.validation import get_title
-from sklearn.metrics import accuracy_score, roc_auc_score
+from sklearn.metrics import f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
 from titanic_model import __version__ as _version
@@ -38,6 +38,7 @@ def run_training() -> None:
         # we are setting the random seed here
         # for reproducibility
         random_state=config.model_config_params.random_state,
+        stratify=data[config.model_config_params.target],
     )
 
     # fit model
@@ -48,30 +49,30 @@ def run_training() -> None:
     pred_train = titanic_pipe.predict_proba(X_train)[:, 1]
 
     # determine train accuracy and roc-auc
-    train_accuracy = accuracy_score(y_train, class_train)
+    train_f1 = f1_score(y_train, class_train)
     train_roc_auc = roc_auc_score(y_train, pred_train)
 
-    print(f"train accuracy: {train_accuracy}")
-    print(f"train roc-auc: {train_roc_auc}")
+    print(f"train f1-score: {train_f1:.4f}")
+    print(f"train roc-auc: {train_roc_auc:.4f}")
     print()
 
-    logging.info(f"train accuracy: {train_accuracy}")
-    logging.info(f"train roc-auc: {train_roc_auc}")
+    logging.info(f"train f1-score: {train_f1:.4f}")
+    logging.info(f"train roc-auc: {train_roc_auc:.4f}")
 
     # make predictions for test set
     class_test = titanic_pipe.predict(X_test)
     pred_test = titanic_pipe.predict_proba(X_test)[:, 1]
 
     # determine test accuracy and roc-auc
-    test_accuracy = accuracy_score(y_test, class_test)
+    test_f1 = f1_score(y_test, class_test)
     test_roc_auc = roc_auc_score(y_test, pred_test)
 
-    print(f"test accuracy: {test_accuracy}")
-    print(f"test roc-auc: {test_roc_auc}")
+    print(f"test f1-score: {test_f1:.4f}")
+    print(f"test roc-auc: {test_roc_auc:.4f}")
     print()
 
-    logging.info(f"test accuracy: {test_accuracy}")
-    logging.info(f"test roc-auc: {test_roc_auc}")
+    logging.info(f"test f1-score: {test_f1:.4f}")
+    logging.info(f"test roc-auc: {test_roc_auc:.4f}")
 
     # persist trained model
     save_pipeline(pipeline_to_persist=titanic_pipe)

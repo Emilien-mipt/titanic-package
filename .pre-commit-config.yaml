@@ -52,10 +52,17 @@ repos:
   rev: v1.15.0  # Обновлено с 9feadeb
   hooks:
     - id: mypy
+      additional_dependencies:
+        - types-PyYAML
+        - types-requests
       args: [
         --ignore-missing-imports,
-        --no-warn-no-return,  # Изменено с --warn-no-return
+        --check-untyped-defs,
+        --warn-unused-configs,
         --warn-redundant-casts,
-        --show-error-codes
+        --warn-unused-ignores,
+        --warn-incomplete-stub,
+        --strict-optional,
+        --show-error-context,
+        --follow-imports=skip
       ]
-      additional_dependencies: [types-requests]
