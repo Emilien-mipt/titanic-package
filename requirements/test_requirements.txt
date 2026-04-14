@@ -7,5 +7,5 @@ isort==6.0.1
 mypy==1.15.0
 
 # testing requirements
-pytest==8.3.5
+pytest==9.0.3
 tox==4.26.0
